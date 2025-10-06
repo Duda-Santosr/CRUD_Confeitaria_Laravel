@@ -26,7 +26,8 @@
                                 <select class="form-select" id="sobremesa_id" name="sobremesa_id">
                                     <option value="">Todas as sobremesas</option>
                                     @foreach($sobremesas as $sobremesa)
-                                        <option value="{{ $sobremesa->id }}" {{ request('sobremesa_id') == $sobremesa->id ? 'selected' : '' }}>
+                                        <option value="{{ $sobremesa->id }}" 
+                                            {{ request('sobremesa_id') == $sobremesa->id ? 'selected' : '' }}>
                                             {{ $sobremesa->nome }}
                                         </option>
                                     @endforeach
@@ -59,8 +60,12 @@
                             <div class="mb-3">
                                 <label class="form-label">&nbsp;</label>
                                 <div class="d-flex gap-2">
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Filtrar</button>
-                                    <a href="{{ route('historico.index') }}" class="btn btn-outline-secondary"><i class="fas fa-times"></i> Limpar</a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-search"></i> Filtrar
+                                    </button>
+                                    <a href="{{ route('historico.index') }}" class="btn btn-outline-secondary">
+                                        <i class="fas fa-times"></i> Limpar
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -101,13 +106,17 @@
                                     </td>
                                     <td>
                                         <strong>{{ $movimentacao->sobremesa->nome }}</strong><br>
-                                        <small class="text-muted">{{ $movimentacao->sobremesa->categoria }}</small>
+                                        <small class="text-muted">{{ $movimentacao->sobremesa->categoria ?? '-' }}</small>
                                     </td>
                                     <td>
                                         @if($movimentacao->tipo === 'entrada')
-                                            <span class="badge bg-success"><i class="fas fa-arrow-up"></i> Entrada</span>
+                                            <span class="badge bg-success">
+                                                <i class="fas fa-arrow-up"></i> Entrada
+                                            </span>
                                         @else
-                                            <span class="badge bg-danger"><i class="fas fa-arrow-down"></i> Saída</span>
+                                            <span class="badge bg-danger">
+                                                <i class="fas fa-arrow-down"></i> Saída
+                                            </span>
                                         @endif
                                     </td>
                                     <td>

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Movimentações')
+@section('title', 'Movimentações de Sobremesas')
 
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2><i class="fas fa-exchange-alt"></i> Movimentações de Estoque</h2>
+            <h2><i class="fas fa-exchange-alt"></i> Movimentações de Estoque - Sobremesas</h2>
             <a href="{{ route('historico.index') }}" class="btn btn-outline-primary">
                 <i class="fas fa-history"></i> Ver Histórico Completo
             </a>
@@ -50,6 +50,7 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="col-md-2">
                             <div class="mb-3">
                                 <label for="tipo" class="form-label">Tipo *</label>
@@ -59,24 +60,33 @@
                                     <option value="entrada" {{ old('tipo') == 'entrada' ? 'selected' : '' }}>Entrada</option>
                                     <option value="saida" {{ old('tipo') == 'saida' ? 'selected' : '' }}>Saída</option>
                                 </select>
-                                @error('tipo') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                @error('tipo')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
+
                         <div class="col-md-2">
                             <div class="mb-3">
                                 <label for="quantidade" class="form-label">Quantidade *</label>
                                 <input type="number" class="form-control @error('quantidade') is-invalid @enderror"
-                                       id="quantidade" name="quantidade" min="1" value="{{ old('quantidade') }}" required>
-                                @error('quantidade') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                       id="quantidade" name="quantidade" min="1"
+                                       value="{{ old('quantidade') }}" required>
+                                @error('quantidade')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
+
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label for="observacoes" class="form-label">Observações</label>
                                 <input type="text" class="form-control" id="observacoes" name="observacoes"
-                                       value="{{ old('observacoes') }}" placeholder="Ex: Reposição de estoque">
+                                       value="{{ old('observacoes') }}"
+                                       placeholder="Ex: Reposição de estoque">
                             </div>
                         </div>
+
                         <div class="col-md-2">
                             <div class="mb-3">
                                 <label class="form-label">&nbsp;</label>
